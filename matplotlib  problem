@@ -1,0 +1,25 @@
+import nltk
+import pandas as pd
+import matplotlib.pyplot as plt
+from nltk.corpus import inaugural
+inaugural.fileids()
+[fileid[:4] for fileid in inaugural.fileids()]
+
+
+cfd = nltk.ConditionalFreqDist(
+           (target, fileid[:4])
+           for fileid in inaugural.fileids()
+           for w in inaugural.words(fileid)
+           for target in ['america', 'citizen']
+           if w.lower().startswith(target))
+import matplotlib.pyplot as plt
+cfd.plot()
+Traceback (most recent call last):
+
+  File "<ipython-input-2-1d7044f7b337>", line 16, in <module>
+    cfd.plot()
+
+  File "C:\Users\souan\Anaconda3\lib\site-packages\nltk\probability.py", line 1910, in plot
+    'The plot function requires matplotlib to be installed.'
+
+ValueError: The plot function requires matplotlib to be installed.See http://matplotlib.org/
